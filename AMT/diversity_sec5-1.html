@@ -1,0 +1,730 @@
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<script type="text/javascript" src="jquery-1.4.2.js"></script>
+	<div class="jumbotron text-center" style="margin-bottom:0">
+    <h3>A Study about Statements and Opinions</h3>
+    <!-- <div>Please email Shirley A. Hayati at <a href = "mailto:shirley@gatech.edu">hayat023@umn.edu</a> if you have any questions/find any problems</div>  -->
+  	</div>
+	<div class="container" style="font-size:20px">    
+      <div id="instruction" style="padding:20px;">
+        <h2>Instructions</h2>
+        <p>
+        Thank you for participating in this study! Please read the instructions carefully. 
+        <!-- <br><br>(<span style="color:red">WARNING: This study may contain offensive words which may be upsetting</span> ) -->
+        </p>
+        <p>
+        	In this study, you will be shown <b>a statement</b>. First, please decide whether you agree or disagree with the statement. (Note that there is no right or wrong answer for your opinions.)<br><br>
+
+        	And then, you will be shown two sets of opinions and will be asked to <b style="color:blue">select which set of the opinions</b> are <b style='color:red'>more diverse</b>. 
+
+        	<br><br>Two sets of opinions can be written in <u>different structure but they can still convey the same idea</u>.
+        	<br><br>
+
+			<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+				<table>
+					<tr>
+						<th><b>Set A</b></th><th><b>Set B</b></th>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>I love to eat ice cream on a warm summer day.</li>
+								<li>Eating ice cream feels great when it's so hot outside.</li>
+								<li>I eat ice cream when I am sad because its sweetness can make me happy again.</li>
+							</ul></td>
+						<td>
+							<ul>
+								<li>I like ice cream.</li>
+								<li>I love ice cream.</li>
+								<li>Eating ice cream is always fun.</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+        	<br>For example, Set A and B convey the same idea about why they like eating ice cream, but the contents are different. 
+			<mark><b>If you think the opinions in the Set A convey more diverse perspectives, then choose A </b></mark>. If you think B sounds more diverse opinions, then choose B. <br><br>
+        	
+        	You will have 1 practice session. In total there will be 5 sets of statements and their related opinions. 
+        </p>
+        <br>
+		
+        <button id="start_button" class="btn btn-success" onclick="show_task()">Start Task</button>
+    </div>
+    <crowd-form>
+    <div id="practice" style="display:none">   	
+    	<section id="practice_section">
+    		<h2>Practice Session: Statement</h2>
+    	<div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+					<!-- <img src="${statement1}" alt="image one" height="25%"> -->
+						<!-- <img src="https://raw.githubusercontent.com/sweetpeach/human_eval/main/sentiment/practice.png" alt="image practice" width="100%"> -->
+						<h2>Everyone likes ice cream.</h2>
+					</div>
+					<br>
+					<div>
+						<p>Do you <b style="color:green">agree</b> or <b style="color:red">disagree</b> with the statement? </p>
+						<input id="text_practice_a" name="just_a_practice" type="radio" value="agree_user" required/> <span id="explanation">Agree</span> <br>
+						<input id="text_practice_b" name="just_a_practice" type="radio" value="disagree_user"/> <span id="explanation">Disagree</span>
+					</div>
+					<br>
+					<p>Please select which set of opinions is more diverse based on <b style="color:blue">how different the main ideas</b> are! Remember that opinions can be written in <u>different structures</u> but they can still convey the <u>same idea</u>. It means that these opinions are <b>not diverse.</b>
+					</p>
+					<div id="practice_table" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+						<table>
+							<tr>
+								<th><b>Set A</b></th><th><b>Set B</b></th>
+							</tr>
+							<tr>
+								<td>
+									<ul>
+										<li>I love to eat ice cream on a warm summer day.</li>
+										<li>Eating ice cream feels great when it's so hot outside.</li>
+										<li>I eat ice cream when I am sad because its sweetness can make me happy again.</li>
+									</ul></td>
+								<td>
+									<ul>
+										<li>I like ice cream.</li>
+										<li>I love ice cream.</li>
+										<li>Eating ice cream is always fun.</li>
+									</ul>
+								</td>
+							</tr>
+						</table>
+						<input id="practice_diversity_seta" name="practice_diversity1" type="radio" value="practice_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+						<input id="practice_diversity_setb" name="practice_diversity1" type="radio" value="practice_setB"/> <span id="diversity"><b>Set B</b>
+					</div>
+					<br>
+					
+						<p><b>Provide your reason here for choosing agree or disagree (please write your reason seriously, since this relates to whether your HIT will be accepted or not. Thank you!)</b></p>
+						<textarea id="freeform_answer" name="just_a_practice" rows="4" cols="50" value="">
+						</textarea>
+					
+					<br>
+					Click "Continue" to continue to the real task. 
+				<br>
+				<br>
+				<label class="btn btn-primary" onclick="check_practice_submission()">Continue</label>
+		<hr>
+    </section>
+    </div>
+    <div id="wrong_selection"  style="display:none">
+    	Sorry you didn't do the practice correctly. You are unable to continue to the next part. 
+    </div>
+      <div id="task" style="display:none"> 
+      	
+		<!-- <section id="section1" style="display:none"> -->
+		<section id="section1" style="display:none">
+				<h2>Statement 1 out of 5</h2>
+			<div class="row">
+				<div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+					<!-- <img src="${statement1}" alt="image one" width="100%">-->
+					It is wrong to knowingly transmit diseases to other people.
+					<!-- It is wrong to knowingly transmit diseases to other people -->
+				</div>
+					<br>
+					<div id="personal_opinion_1">
+						<p>Do you <b style="color:green">agree</b> or <b style="color:red">disagree</b>  with the statement? </p>
+						<input id="text_1_a" name="user_stance_1" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+						<input id="text_1_b" name="user_stance_1" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+					<br><br>	
+					Click "Go to Agree Opinions" to view agreeing opinions about the statement. Then, you need to select which set of opinions is more diverse. <br>	
+					<br>
+				<label class="btn btn-primary" onclick="go_to_agree_opinions(1)">Go to Agree Opinions</label>
+					</div>
+				<div id="agree_1" style="display:none">
+					Please select which set of opinions is more diverse based on <b style="color:blue">how different the main ideas</b> are! Remember that opinions can be written in <u>different structures</u> but they can still convey the <u>same idea</u>. It means that these opinions are <b>not diverse.</b>
+					<br><br>
+					<p>Here are two sets of opinions that <span style="color:green">agree</span> with the statement.</p>
+					<h2 style="color:green">"Agree" Opinions: </h2>
+					<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+						<!-- <img src="img_agree.png" alt="image one" width="100%"> -->
+						<table>
+							<tr>
+								<th><b>Set A</b></th><th><b>Set B</b></th>
+							</tr>
+							<tr>
+								<td><ul><li>It is unethical and immoral to knowingly put others at risk of contracting a disease, and it goes against basic principles of human decency.</li><li>Deliberately transmitting a disease to others is a violation of their bodily autonomy and can cause harm and suffering.</li><li>It is a basic responsibility to take measures to prevent the spread of diseases and protect the health and well-being of others.</li><li>Transmitting a disease to others can have serious consequences, including death, and it is important to take responsibility for one's actions.</li><li>It is a violation of trust to knowingly transmit a disease to someone, especially if they have placed their trust in the person to act in their best interest.</li></ul>
+								</td><td><ul><li>It is morally and ethically wrong to knowingly transmit diseases to others, and we have a responsibility to protect the health and well-being of those around us.</li><li>Transmitting diseases can pose a threat to public health and safety, and it is important to take measures to prevent the spread of illness.</li><li>Knowingly transmitting diseases can be considered a criminal act and may be punishable by law, as it can be seen as negligence or intentional harm.</li><li>It is important to have compassion and empathy for others and to take steps to prevent the spread of illness, even if it means making sacrifices or inconveniences.</li><li>As members of society, we have a social responsibility and duty to protect the health and well-being of those around us, and knowingly transmitting diseases goes against that responsibility.</li><li>Preventing the spread of diseases is a proactive approach to protecting public health and safety, and it is important to take measures to prevent transmission.</li></ul>
+								</td>
+							</tr>
+						</table>
+					</div>					
+					<h2>Which set contains more <span style="color:blue">diverse</span> opinions?</h2>					
+					<input id="agr_text_1_diversity_seta" name="agree_diversity1" type="radio" value="agree1_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+					<input id="agr_text_1_diversity_setb" name="agree_diversity1" type="radio" value="agree1_setB"/> <span id="diversity"><b>Set B</b>
+					<br><br>
+					Click "Go to Disagree Opinions" to view disagreeing opinions about the statement. Then, you need to select which set of opinions is more diverse. <br>	
+					<br>
+					<label class="btn btn-primary" onclick="go_to_disagree_opinions(1)">Go to Disagree Opinions</label>
+				</div>
+
+				<div id="disagree_1" style="display:none">
+					<br>
+					<p>Here are opinions that <span style="color:red">disagree</span> with the statement.</p>
+					<h2 style="color:red">"Disagree" Opinions: </h2>
+					<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+						<!-- <img src="img_disagree.png" alt="image one" width="100%"> -->
+						<table>
+							<tr>
+								<th><b>Set A</b></th><th><b>Set B</b></th>
+							</tr>
+							<tr>
+								<td>${disagree1_seta}</td><td>${disagree1_setb}</td>
+							</tr>
+						</table>						
+					</div>					
+					<h2>Which set contains more <span style="color:blue">diverse</span> opinions?</h2>				
+					<input id="disagr_text_1_diversity_seta" name="disagree_diversity1" type="radio" value="disagree1_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+					<input id="disagr_text_1_diversity_setb" name="disagree_diversity1" type="radio" value="disagree1_setB"/> <span id="diversity"><b>Set B</b>
+						<br><br>
+					<label class="btn btn-primary" onclick="go_to_next_statement(1)">Next Statement</label>
+				</div>				
+			</div>
+		<hr><br>
+		</section>
+
+		<section id="section2" style="display:none">
+			<h2>Statement 2 out of 5</h2>
+		<div class="row">
+			<div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+				<!-- <img src="${statement1}" alt="image one" width="100%">-->
+				${statement2}
+				<!-- It is wrong to knowingly transmit diseases to other people -->
+			</div>
+				<br>
+				<div id="personal_opinion_2">
+					<p>Do you <b style="color:green">agree</b> or <b style="color:red">disagree</b>  with the statement? </p>
+					<input id="text_2_a" name="user_stance_2" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+					<input id="text_2_b" name="user_stance_2" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+				<br><br>	
+				Click "Go to Agree Opinions" to view agreeing opinions about the statement. Then, you need to select which set of opinions is more diverse. <br>	
+				<br>
+			<label class="btn btn-primary" onclick="go_to_agree_opinions(2)">Compare Diversity</label>
+				</div>
+			<div id="agree_2" style="display:none">
+				Please select which set of opinions is more diverse based on <b style="color:blue">how different the main ideas</b> are! Remember that opinions can be written in <u>different structures</u> but they can still convey the <u>same idea</u>. It means that these opinions are <b>not diverse.</b>
+				<br><br>
+				<p>Here are two sets of opinions that <span style="color:green">agree</span> with the statement.</p>
+				<h2 style="color:green">"Agree" Opinions: </h2>
+				<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+					<!-- <img src="img_agree.png" alt="image one" width="100%"> -->
+					<table>
+						<tr>
+							<th><b>Set A</b></th><th><b>Set B</b></th>
+						</tr>
+						<tr>
+							<td>${agree2_seta}</td><td>${agree2_setb}</td>
+						</tr>
+					</table>
+				</div>					
+				<h2>Which set contains more <span style="color:blue">diverse</span> opinions?</h2>					
+				<input id="agr_text_2_diversity_seta" name="agree_diversity2" type="radio" value="agree2_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+				<input id="agr_text_2_diversity_setb" name="agree_diversity2" type="radio" value="agree2_setB"/> <span id="diversity"><b>Set B</b>
+				<br><br>
+				Click "Go to Disagree Opinions" to view disagreeing opinions about the statement. Then, you need to select which set of opinions is more diverse. <br>	
+				<br>
+				<label class="btn btn-primary" onclick="go_to_disagree_opinions(2)">Go to Disagree Opinions</label>
+			</div>
+
+			<div id="disagree_2" style="display:none">
+				<br>
+				<p>Here are opinions that <span style="color:red">disagree</span> with the statement.</p>
+				<h2 style="color:red">"Disagree" Opinions: </h2>
+				<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+					<!-- <img src="img_disagree.png" alt="image one" width="100%"> -->
+					<table>
+						<tr>
+							<th><b>Set A</b></th><th><b>Set B</b></th>
+						</tr>
+						<tr>
+							<td>${disagree2_seta}</td><td>${disagree2_setb}</td>
+						</tr>
+					</table>					
+				</div>					
+				<h2>Which set contains more <span style="color:blue">diverse</span> opinions?</h2>				
+				<input id="disagr_text_2_diversity_seta" name="disagree_diversity2" type="radio" value="disagree2_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+				<input id="disagr_text_2_diversity_setb" name="disagree_diversity2" type="radio" value="disagree2_setB"/> <span id="diversity"><b>Set B</b>
+					<br><br>
+				<label class="btn btn-primary" onclick="go_to_next_statement(2)">Next Statement</label>
+			</div>				
+		</div>
+	<hr><br>
+	</section>
+
+	<section id="section3" style="display:none">
+		<h2>Statement 3 out of 5</h2>
+	<div class="row">
+		<div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+			<!-- <img src="${statement1}" alt="image one" width="100%">-->
+			${statement3}
+			<!-- It is wrong to knowingly transmit diseases to other people -->
+		</div>
+			<br>
+			<div id="personal_opinion_3">
+				<p>Do you <b style="color:green">agree</b> or <b style="color:red">disagree</b>  with the statement? </p>
+				<input id="text_3_a" name="user_stance_3" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+				<input id="text_3_b" name="user_stance_3" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+			<br><br>	
+			Click "Compare Diversity" to view agreeing opinions about the statement. Then, you need to rate how diverse the opinions are. <br>	
+			<br>
+		<label class="btn btn-primary" onclick="go_to_agree_opinions(3)">Compare Diversity</label>
+			</div>
+		<div id="agree_3" style="display:none">
+			Please select which set of opinions is more diverse based on <b style="color:blue">how different the main ideas</b> are! Remember that opinions can be written in <u>different structures</u> but they can still convey the <u>same idea</u>. It means that these opinions are <b>not diverse.</b>
+			<br><br>
+			<p>Here are two sets of opinions that <span style="color:green">agree</span> with the statement.</p>
+			<h2 style="color:green">"Agree" Opinions: </h2>
+			<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+				<!-- <img src="img_agree.png" alt="image one" width="100%"> -->
+				<table>
+					<tr>
+						<th><b>Set A</b></th><th><b>Set B</b></th>
+					</tr>
+					<tr>
+						<td>${agree3_seta}</td><td>${agree3_setb}</td>
+					</tr>
+				</table>
+			</div>					
+			<h2>Which set contains more <span style="color:blue">diverse</span> opinions?</h2>					
+			<input id="agr_text_3_diversity_seta" name="agree_diversity3" type="radio" value="agree3_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+			<input id="agr_text_3_diversity_setb" name="agree_diversity3" type="radio" value="agree3_setB"/> <span id="diversity"><b>Set B</b>
+			<br><br>
+			Click "Go to Disagree Opinions" to view disagreeing opinions about the statement. Then, you need to select which set of opinions is more diverse. <br>	
+			<br>
+			<label class="btn btn-primary" onclick="go_to_disagree_opinions(3)">Go to Disagree Opinions</label>
+		</div>
+
+		<div id="disagree_3" style="display:none">
+			<br>
+			<p>Here are opinions that <span style="color:red">disagree</span> with the statement.</p>
+			<h2 style="color:red">"Disagree" Opinions: </h2>
+			<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+				<!-- <img src="img_disagree.png" alt="image one" width="100%"> -->
+				<table>
+					<tr>
+						<th><b>Set A</b></th><th><b>Set B</b></th>
+					</tr>
+					<tr>
+						<td>${disagree3_seta}</td><td>${disagree3_setb}</td>
+					</tr>
+				</table>					
+			</div>					
+			<h2>Which set contains more <span style="color:blue">diverse</span> opinions?</h2>				
+			<input id="disagr_text_3_diversity_seta" name="disagree_diversity3" type="radio" value="disagree3_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+			<input id="disagr_text_3_diversity_setb" name="disagree_diversity3" type="radio" value="disagree3_setB"/> <span id="diversity"><b>Set B</b>
+				<br><br>
+			<label class="btn btn-primary" onclick="go_to_next_statement(3)">Next Statement</label>
+		</div>				
+	</div>
+	<hr><br>
+	</section>
+
+	<section id="section4" style="display:none">
+			<h2>Statement 4 out of 5</h2>
+		<div class="row">
+			<div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+				<!-- <img src="${statement1}" alt="image one" width="100%">-->
+				${statement4}
+				<!-- It is wrong to knowingly transmit diseases to other people -->
+			</div>
+				<br>
+				<div id="personal_opinion_4">
+					<p>Do you <b style="color:green">agree</b> or <b style="color:red">disagree</b>  with the statement? </p>
+					<input id="text_4_a" name="user_stance_4" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+					<input id="text_4_b" name="user_stance_4" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+				<br><br>	
+				Click "Compare Diversity" to view agreeing opinions about the statement. Then, you need to rate how diverse the opinions are. <br>	
+				<br>
+			<label class="btn btn-primary" onclick="go_to_agree_opinions(4)">Compare Diversity</label>
+				</div>
+			<div id="agree_4" style="display:none">
+				Please select which set of opinions is more diverse based on <b style="color:blue">how different the main ideas</b> are! Remember that opinions can be written in <u>different structures</u> but they can still convey the <u>same idea</u>. It means that these opinions are <b>not diverse.</b>
+				<br><br>
+				<p>Here are two sets of opinions that <span style="color:green">agree</span> with the statement.</p>
+				<h2 style="color:green">"Agree" Opinions: </h2>
+				<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+					<!-- <img src="img_agree.png" alt="image one" width="100%"> -->
+					<table>
+						<tr>
+							<th><b>Set A</b></th><th><b>Set B</b></th>
+						</tr>
+						<tr>
+							<td>${agree4_seta}</td><td>${agree4_setb}</td>
+						</tr>
+					</table>
+				</div>					
+				<h2>Which set contains more <span style="color:blue">diverse</span> opinions?</h2>					
+				<input id="agr_text_4_diversity_seta" name="agree_diversity4" type="radio" value="agree4_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+				<input id="agr_text_4_diversity_setb" name="agree_diversity4" type="radio" value="agree4_setB"/> <span id="diversity"><b>Set B</b>
+				<br><br>
+				Click "Go to Disagree Opinions" to view disagreeing opinions about the statement. Then, you need to select which set of opinions is more diverse. <br>	
+				<br>
+				<label class="btn btn-primary" onclick="go_to_disagree_opinions(4)">Go to Disagree Opinions</label>
+			</div>
+
+			<div id="disagree_4" style="display:none">
+				<br>
+				<p>Here are opinions that <span style="color:red">disagree</span> with the statement.</p>
+				<h2 style="color:red">"Disagree" Opinions: </h2>
+				<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+					<!-- <img src="img_disagree.png" alt="image one" width="100%"> -->
+					<table>
+						<tr>
+							<th><b>Set A</b></th><th><b>Set B</b></th>
+						</tr>
+						<tr>
+							<td>${disagree4_seta}</td><td>${disagree4_setb}</td>
+						</tr>
+					</table>					
+				</div>					
+				<h2>Which set contains more <span style="color:blue">diverse</span> opinions?</h2>				
+				<input id="disagr_text_4_diversity_seta" name="disagree_diversity4" type="radio" value="disagree4_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+				<input id="disagr_text_4_diversity_setb" name="disagree_diversity4" type="radio" value="disagree4_setB"/> <span id="diversity"><b>Set B</b>
+					<br><br>
+				<label class="btn btn-primary" onclick="go_to_next_statement(4)">Next Statement</label>
+			</div>				
+		</div>
+	<hr><br>
+	</section>
+
+	<section id="section5" style="display:none">
+		<h2>Statement 5 out of 5</h2>
+	<div class="row">
+		<div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+			<!-- <img src="${statement1}" alt="image one" width="100%">-->
+			${statement5}
+			<!-- It is wrong to knowingly transmit diseases to other people -->
+		</div>
+			<br>
+			<div id="personal_opinion_5">
+				<p>Do you <b style="color:green">agree</b> or <b style="color:red">disagree</b>  with the statement? </p>
+				<input id="text_5_a" name="user_stance_5" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+				<input id="text_5_b" name="user_stance_5" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+			<br><br>	
+			Click "Compare Diversity" to view agreeing opinions about the statement. Then, you need to rate how diverse the opinions are. <br>	
+			<br>
+		<label class="btn btn-primary" onclick="go_to_agree_opinions(5)">Compare Diversity</label>
+			</div>
+		<div id="agree_5" style="display:none">
+			Please select which set of opinions is more diverse based on <b style="color:blue">how different the main ideas</b> are! Remember that opinions can be written in <u>different structures</u> but they can still convey the <u>same idea</u>. It means that these opinions are <b>not diverse.</b>
+			<br><br>
+			<p>Here are two sets of opinions that <span style="color:green">agree</span> with the statement.</p>
+			<h2 style="color:green">"Agree" Opinions: </h2>
+			<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+				<!-- <img src="img_agree.png" alt="image one" width="100%"> -->
+				<table>
+					<tr>
+						<th><b>Set A</b></th><th><b>Set B</b></th>
+					</tr>
+					<tr>
+						<td>${agree5_seta}</td><td>${agree5_setb}</td>
+					</tr>
+				</table>
+			</div>					
+			<h2>Which set contains more <span style="color:blue">diverse</span> opinions?</h2>					
+			<input id="agr_text_5_diversity_seta" name="agree_diversity5" type="radio" value="agree5_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+			<input id="agr_text_5_diversity_setb" name="agree_diversity5" type="radio" value="agree5_setB"/> <span id="diversity"><b>Set B</b>
+			<br><br>
+			Click "Go to Disagree Opinions" to view disagreeing opinions about the statement. Then, you need to select which set of opinions is more diverse. <br>	
+			<br>
+			<label class="btn btn-primary" onclick="go_to_disagree_opinions(5)">Go to Disagree Opinions</label>
+		</div>
+
+		<div id="disagree_5" style="display:none">
+			<br>
+			<p>Here are opinions that <span style="color:red">disagree</span> with the statement.</p>
+			<h2 style="color:red">"Disagree" Opinions: </h2>
+			<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+				<!-- <img src="img_disagree.png" alt="image one" width="100%"> -->
+				<table>
+					<tr>
+						<th><b>Set A</b></th><th><b>Set B</b></th>
+					</tr>
+					<tr>
+						<td>${disagree5_seta}</td><td>${disagree5_setb}</td>
+					</tr>
+				</table>					
+			</div>					
+			<h2>Which set contains more <span style="color:blue">diverse</span> opinions?</h2>				
+			<input id="disagr_text_5_diversity_seta" name="disagree_diversity5" type="radio" value="disagree5_setA" required/> <span id="diversity"><b>Set A</b></span> <br>
+			<input id="disagr_text_5_diversity_setb" name="disagree_diversity5" type="radio" value="disagree5_setB"/> <span id="diversity"><b>Set B</b>
+				<br><br>
+			<label class="btn btn-primary" onclick="finish()">Next Question: Demographics</label>
+		</div>				
+		</div>
+		<hr><br>
+		</section>
+
+		<section id="comment_section" style="display:none">
+		<div class="row">
+			<h2>What race do you identify yourself as?</h2>
+					<input id="white_race" name="demographic_question_race" type="radio" value="white" required/> <span id="demographic_q">White</span> <br>
+					<input id="black_race" name="demographic_question_race" type="radio" value="black"/> <span id="demographic_q">Black or African American</span><br>
+					<input id="asian_race" name="demographic_question_race" type="radio" value="asian"/> <span id="demographic_q">Asian</span><br>
+					<input id="native_race" name="demographic_question_race" type="radio" value="native"/> <span id="demographic_q">Native American or Alaska Native</span><br>
+					<input id="pacific_race" name="demographic_question_race" type="radio" value="pacific"/> <span id="demographic_q">Pacific Islander</span><br>
+					<input id="other_race" name="demographic_question_race" type="radio" value="other"/> <span id="demographic_q">Other</span><br>
+				<h2>What is your age group?</h2>					
+					<input id="q2_17" name="demographic_question_age" type="radio" value="younger_than_17" required/> <span id="demographic_q">< 17</span> <br>
+					<input id="q2_24" name="demographic_question_age" type="radio" value="17_to_24" required/> <span id="demographic_q">17-24</span> <br>
+					<input id="q2_34" name="demographic_question_age" type="radio" value="25_to_34"/> <span id="demographic_q">25-34</span><br>
+					<input id="q2_44" name="demographic_question_age" type="radio" value="35_to_44"/> <span id="demographic_q">35-44</span><br>
+					<input id="q2_54" name="demographic_question_age" type="radio" value="45_to_54"/> <span id="demographic_q">45-54</span><br>
+					<input id="q2_64" name="demographic_question_age" type="radio" value="55_to_64"/> <span id="demographic_q">55-64</span><br>
+					<input id="q2_74" name="demographic_question_age" type="radio" value="65_to_74"/> <span id="demographic_q">65-74</span><br>
+					<input id="q2_older" name="demographic_question_age" type="radio" value="older_than_74"/> <span id="demographic_q">> 74</span><br>
+
+				<h2>Any comments or feedback on this task? (Optional)</h2>
+				<br>
+				<textarea id="comment_box" name="comments" rows="4" cols="50">
+			</textarea>
+			<br>
+			Click "Submit" to submit this task. Thank you!
+			<br>
+			</div>
+		</section>
+	
+	</crowd-form>
+		
+	</div>	
+</div>
+
+
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet" /><!-- Open internal style sheet -->
+<style type="text/css">.fixed {
+  position: fixed;
+}
+p{
+	font-size: 20px;
+}
+
+ul{
+	margin-top: 0;
+	padding-left: 20px;
+}
+    
+li{
+	margin-bottom: 10px;
+}
+
+#explanation{
+	font-size: 20px;
+}
+
+.scrollable {
+    height: 2000px;
+    width: 500%;
+    margin: 0 auto;
+    border: 1px dashed black;   
+}
+
+.row{
+	margin: 20px;
+}
+
+.form-group{
+    margin-bottom: 0px;
+
+}
+.group-label{
+  display: block;
+  font-weight: 400!important;
+}
+.container{
+font-size: 18px!important;
+}
+
+#collapseTrigger{
+    color:#fff;
+    display: block;
+    text-decoration: none;
+  }
+  #submitButton{
+    white-space: normal;
+  }
+  #instructionBody table{
+    font-size: 15px;
+    margin-top: 30px;
+  }
+  #instructionBody table caption{
+    text-align: left;
+    padding: 0 0 5px 0;
+  }
+    .content{
+    margin-bottom: 10px;
+  }
+  .radio:first-of-type{
+    margin-top: -5px;
+  }
+  img {
+  	object-fit: cover;
+	}
+
+table {
+	border-collapse: collapse;
+	margin-bottom: 10px;
+}
+    
+th, td {
+	border: 1px solid black;
+	padding: 5px;
+	text-align: left;
+}
+th {
+	text-align: center;
+}
+</style>
+<!-- Close internal style sheet --><!-- External JS references --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+	function show_task() {
+  		document.getElementById("instruction").style.display = "none";
+  		document.getElementById("practice").style.display = "";  		
+  	}
+  	function show_real_task() {
+  		document.getElementById("practice").style.display = "none";
+  		document.getElementById("task").style.display = "";
+  		document.getElementById("section1").style.display = "";		
+  	}
+
+  	// function go_to_diversity_questions(idx) {
+  	// 	temp1 = document.getElementById("text_"+idx+"_a").checked
+  	// 	temp2 = document.getElementById("text_"+idx+"_b").checked  		
+  	// 	if (temp1 == false && temp2 == false){
+  	// 		alert("You should select your stance whether you agree or disagree")
+  	// 	}
+  	// 	else{
+  	// 		document.getElementById("personal_opinion_"+idx).style.display = "none";
+  	// 		document.getElementById("agree_"+idx).style.display = "";
+  	// 		document.getElementById("disagree_"+idx).style.display = "";	
+  	// 	}
+  			
+  	// }
+
+	function go_to_agree_opinions(idx) {
+		temp1 = document.getElementById("text_"+idx+"_a").checked
+		temp2 = document.getElementById("text_"+idx+"_b").checked  		
+		if (temp1 == false && temp2 == false){
+			alert("You should select your stance whether you agree or disagree")
+		}
+		else{
+			document.getElementById("personal_opinion_"+idx).style.display = "none";
+			document.getElementById("agree_"+idx).style.display = "";
+		}		
+	}
+
+	function go_to_disagree_opinions(idx) {
+		check_agree = false
+		check_disagree = false
+
+		temp1 = document.getElementById("agr_text_"+idx+"_diversity_seta").checked
+		temp2 = document.getElementById("agr_text_"+idx+"_diversity_setb").checked
+
+		if (temp1 == false && temp2 == false){
+			alert("You should select either 'Set A' or 'Set B'.")
+		}
+		else{
+			check_agree = true
+			document.getElementById("personal_opinion_"+idx).style.display = "none";
+			document.getElementById("agree_"+idx).style.display = "none";
+			document.getElementById("disagree_"+idx).style.display = "";	
+		}
+		
+	}	
+
+  	function go_to_next_statement(idx) {
+  		next_idx = idx + 1
+  		check_agree = true
+		check_disagree = false
+
+		// temp1 = document.getElementById("agr_text_"+idx+"_diversity_seta").checked
+		// temp2 = document.getElementById("agr_text_"+idx+"_diversity_setb").checked
+		// temp5 = document.getElementById("agr_text_"+idx+"_diversity_seta").checked
+  		// temp4 = document.getElementById("agr_text_"+idx+"_diversity_seta").checked 
+  		// temp3 = document.getElementById("agr_text_"+idx+"_diversity_seta").checked 
+  		// temp2 = document.getElementById("agr_text_"+idx+"_diversity_seta").checked 
+  		// temp1 = document.getElementById("agr_text_"+idx+"_diversity_seta").checked 
+  		// if (temp1 == false && temp2 == false){
+  		// 	alert("You should select either 'Set A' or 'Set B'.")
+  		// }
+  		// else{
+  		// 	check_agree = true
+  		// }
+
+		temp1 = document.getElementById("disagr_text_"+idx+"_diversity_seta").checked
+		temp2 = document.getElementById("disagr_text_"+idx+"_diversity_setb").checked
+		// temp5 = document.getElementById("disagr_text_"+idx+"_diversity_5").checked
+  		// temp4 = document.getElementById("disagr_text_"+idx+"_diversity_4").checked 
+  		// temp3 = document.getElementById("disagr_text_"+idx+"_diversity_3").checked 
+  		// temp2 = document.getElementById("disagr_text_"+idx+"_diversity_2").checked 
+  		// temp1 = document.getElementById("disagr_text_"+idx+"_diversity_1").checked 
+  		if (temp1 == false && temp2 == false){
+			alert("You should select either 'Set A' or 'Set B'.")
+  		}
+  		else{
+  			check_disagree = true
+  		}
+
+  		if (check_agree == true && check_disagree == true){
+  			document.getElementById("section"+idx).style.display = "none";
+  			document.getElementById("section"+next_idx).style.display = "";	
+  		}
+  			
+  	}
+
+  	function finish(){
+  		idx = 5
+		check_agree = true
+		// temp1 = document.getElementById("agr_text_"+idx+"_diversity_seta").checked
+		// temp2 = document.getElementById("agr_text_"+idx+"_diversity_setb").checked
+  		// if (temp1 == false && temp2 == false){
+		// 	alert("You should select either 'Set A' or 'Set B'.")
+  		// }
+  		// else{
+  		// 	check_agree = true
+  		// }
+
+		temp1 = document.getElementById("disagr_text_"+idx+"_diversity_seta").checked
+		temp2 = document.getElementById("disagr_text_"+idx+"_diversity_setb").checked
+  		if (temp1 == false && temp2 == false){
+			alert("You should select either 'Set A' or 'Set B'.")
+  		}
+  		else{
+  			check_disagree = true
+  		}
+
+  		if (check_agree == true && check_disagree == true){
+  		
+  			document.getElementById("section5").style.display = "none";
+  			document.getElementById("comment_section").style.display = "";
+  		}
+  	}
+
+  	function check_practice_submission() {
+  		
+  		temp1 = document.getElementById("text_practice_a").checked
+  		temp2 = document.getElementById("text_practice_b").checked 
+  		// alert("hehe") 		  		
+  		first_qual = false
+
+  		if (temp1 == false && temp2 == false){
+  			alert("You should select your opinion")  			
+  		}
+  		else{
+  			first_qual = true
+  		}
+
+  		if(document.getElementById("freeform_answer").value.trim() == '')
+		{
+    		alert("Please write your reason");
+  		}
+  		else{
+  			second_qual = true
+  		}
+
+  		if (first_qual == true && second_qual == true){
+  			show_real_task()
+  		}
+  			
+  	}
+  
+  </script><!-- Close internal javascript -->

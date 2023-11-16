@@ -1,0 +1,704 @@
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<script type="text/javascript" src="jquery-1.4.2.js"></script>
+	<div class="jumbotron text-center" style="margin-bottom:0">
+    <h3>A Study about Statements and Opinions</h3>
+    <!-- <div>Please email Shirley A. Hayati at <a href = "mailto:shirley@gatech.edu">hayat023@umn.edu</a> if you have any questions/find any problems</div>  -->
+  	</div>
+	<div class="container" style="font-size:20px">    
+      <div id="instruction" style="padding:20px;">
+        <h2>Instructions</h2>
+        <p>
+        Thank you for participating in this study! Please read the instructions carefully. 
+        <!-- <br><br>(<span style="color:red">WARNING: This study may contain offensive words which may be upsetting</span> ) -->
+        </p>
+        <p>
+        	In this study, you will be shown <b>a statement</b>. First, please decide whether you agree or disagree with the statement. (Note that there is no right or wrong answer for your opinions.)<br><br>
+
+        	And then, you will be asked to <b style="color:blue">write down reasons</b> for both stance. Please write opinions <b style="color:red">as many as you can come up with </b> for each statement.
+        	The opinion format must follow this: 
+            <ol>
+                <li><b style="color:blue">IMPORTANT: </b> When you write down each opinion, <b style="color:red">start with the numbered list (e.g., 1., 2., 3., etc.), followed by the enterspace.
+                Each opinion should take one line, and another opinion should be written in the next line. </b> </li>
+                <li> <mark><b>Try to think up opinions with diversity (e.g., different reasons), regardless of your personal stance on the statement.</b></mark>. </li>
+            </ol>
+            
+            <br>
+
+            Here is an example: 
+            <br><br>
+
+			<div id="example_input_text" style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                <b>It is rude to call a person's first name at the first time of meeting.</b>
+			</div>
+            <div>
+                <br> Do you agree or disagree with the statement? Click either buttons. <br>
+                <button class="btn btn-primary"> Agree </button>
+                <button class="btn btn-danger"> Disagree </button>
+            </div>
+            <br><br>
+            Write down <b style="color: blue;">"agreeing"</b> opinions as many as you can think up. 
+            <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                <!-- <textarea id = "example_agree_box" name="example_agree_op" rows="10" cols=55 value=""> -->
+                1. Addressing someone by their first name upon first meeting is considered disrespectful. <br>
+                2. In professional settings, using a person's last name with an appropriate title (Mr., Mrs., Dr., etc.) can show a level of formality. <br>
+                3. Following the social norms and etiquettes can facilitate a more formal introduction process.
+
+                <!-- </textarea> -->
+            </div>
+            <br><br>
+            Write down <b style="color: red;">"disagreeing"</b> opinions as many as you can think up. 
+            <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                <!-- <textarea id = "example_agree_box" name="example_disagree_op" value=""></textarea> -->
+                1. Using first names can make interactions feel more personal and friendly, fostering better connections. <br>
+                2. It is a modern trend of using first names in many workplaces. 
+            </div>        	
+            
+            <br>First, click a button that matches your stance with the statement. Then, you can write down why people agree and/or disagree with the statement on the two text boxes, respectively.
+			<br>
+            
+            <br>This is the only criteria of our manual review on your HIT submission.<br>
+        	
+        	You will have 1 practice session. You will be required to follow the instruction as you may already read carefully. 
+        </p>
+        <br>
+		
+        <button id="start_button" class="btn btn-success" onclick="show_task()">Start Practice Task</button>
+    </div>
+    <crowd-form>
+    <div id="practice" style="display:none">   	
+    	<section id="practice_section">
+    		<h2>Practice Session: Statement</h2>
+            <br>
+            The opinion format must follow this: 
+            <ol>
+                <li><b style="color:blue">IMPORTANT: </b> When you write down each opinion, <b>start with the numbered list (e.g., 1., 2., 3., etc.), followed by the enterspace.
+                Each opinion should take one line, and another opinion should be written in the next line. </b> </li>
+                <li> <mark><b>Try to think up opinions with diversity (e.g., different reasons).</b></mark>. </li>
+            </ol>
+            <br>
+            <div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+                            <h2>Everyone likes ice cream.</h2>
+            </div>
+            <br>
+            <div>
+                <p>Do you <b style="color:green">agree</b> or <b style="color:red">disagree</b> with the statement? </p>
+                <input id="text_practice_ag" name="just_a_practice" type="radio" value="agree_user" required/> <span id="explanation">Agree</span> <br>
+                <input id="text_practice_dis" name="just_a_practice" type="radio" value="disagree_user"/> <span id="explanation">Disagree</span>
+            </div>
+            <br>
+            <br>
+            Write down <b style="color: blue;">"agreeing"</b> opinions as many as you can think up. 
+            <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                <textarea id = "example_agree_box" name="example_agree_op" rows="10" cols=55 value="" required></textarea>
+            </div>
+            <br><br>
+            Write down <b style="color: red;">"disagreeing"</b> opinions as many as you can think up. 
+            <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                <textarea id = "example_disagree_box" name="example_disagree_op" value="" required></textarea>
+            </div> 
+            
+            <br>
+            Click "Continue" to continue to the real task. Your response will be reviewed for the HIT approval. 
+            <br>
+            <br>
+            <label class="btn btn-primary" onclick="check_practice_submission()">Continue</label>
+            <hr>
+        </section>
+    </div>
+    <div id="wrong_selection"  style="display:none">
+    	Sorry, but you didn't do the practice correctly. You are unable to continue to the next part. 
+    </div>
+
+
+      <div id="task" style="display:none">   	
+		<section id="section1" style="display:none">
+				<h2>Statement 1 out of 5</h2>
+                <br>
+                The opinion format must follow this: 
+                <ol>
+                    <li><b style="color:blue">IMPORTANT: </b> When you write down each opinion, <b>start with the numbered list (e.g., 1., 2., 3., etc.), followed by the enterspace.
+                    Each opinion should take one line, and another opinion should be written in the next line. </b> </li>
+                    <li> <mark><b>Try to think up opinions with diversity (e.g., different reasons), regardless of your personal stance to the statement.</b></mark>. </li>
+                </ol>
+                <br>
+			<div class="row">
+				<div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+					You are expected to do what you are told.
+				</div>
+					<br>
+					<div id="personal_opinion_1">
+						<p>Do you <b style="color:blue">agree</b> or <b style="color:red">disagree</b> with the statement? </p>
+						<input id="text_1_a" name="user_stance_1" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+						<input id="text_1_b" name="user_stance_1" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+					<br><br>	
+					</div>
+				<div id="box_1">
+                    Write down <b style="color: blue;">"agreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "agree_1_box" name="agree_1_op" rows="10" cols=55 value="" required></textarea>
+                    </div>
+                    <br><br>
+                    Write down <b style="color: red;">"disagreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "disagree_1_box" name="disagree_1_op" rows="10" cols=55 value="" required></textarea>
+                    </div> 
+					<br><br>
+					Click "Go to Next statement" to view the second statement. Then, you need to follow the same instruction. <br>	
+					<br>
+					<label class="btn btn-primary" onclick="go_to_next_statement(1)">Go to Next Statement</label>
+				</div>
+			</div>
+		<hr><br>
+		</section>
+
+        <section id="section2" style="display:none">
+            <h2>Statement 2 out of 7</h2>
+            <br>
+            The opinion format must follow this: 
+            <ol>
+                <li><b style="color:blue">IMPORTANT: </b> When you write down each opinion, <b>start with the numbered list (e.g., 1., 2., 3., etc.), followed by the enterspace.
+                Each opinion should take one line, and another opinion should be written in the next line. </b> </li>
+                <li> <mark><b>Try to think up opinions with diversity (e.g., different reasons).</b></mark>. </li>
+            </ol>
+            <br>
+        <div class="row">
+            <div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+                ${statement2}
+            </div>
+                <br>
+                <div id="personal_opinion_2">
+                    <p>Do you <b style="color:blue">agree</b> or <b style="color:red">disagree</b> with the statement? </p>
+                    <input id="text_2_a" name="user_stance_2" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+                    <input id="text_2_b" name="user_stance_2" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+                <br><br>	
+                </div>
+            <div id="box_2">
+                Write down <b style="color: blue;">"agreeing"</b> opinions as many as you can think up. 
+                <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                    <textarea id = "agree_2_box" name="agree_2_op" rows="10" cols=55 value="" required></textarea>
+                </div>
+                <br><br>
+                Write down <b style="color: red;">"disagreeing"</b> opinions as many as you can think up. 
+                <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                    <textarea id = "disagree_2_box" name="disagree_2_op" rows="10" cols=55 value="" required></textarea>
+                </div> 
+                <br><br>
+                Click "Go to Next statement" to view the third statement. Then, you need to follow the same instruction. <br>	
+                <br>
+                <label class="btn btn-primary" onclick="go_to_next_statement(2)">Go to Next Statement</label>
+            </div>
+        </div>
+    <hr><br>
+    </section>	
+
+    <section id="section3" style="display:none">
+        <h2>Statement 3 out of 7</h2>
+        <br>
+        The opinion format must follow this: 
+        <ol>
+            <li><b style="color:blue">IMPORTANT: </b> When you write down each opinion, <b>start with the numbered list (e.g., 1., 2., 3., etc.), followed by the enterspace.
+            Each opinion should take one line, and another opinion should be written in the next line. </b> </li>
+            <li> <mark><b>Try to think up opinions with diversity (e.g., different reasons).</b></mark>. </li>
+        </ol>
+        <br>
+        <div class="row">
+            <div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+                ${statement3}
+            </div>
+                <br>
+                <div id="personal_opinion_3">
+                    <p>Do you <b style="color:blue">agree</b> or <b style="color:red">disagree</b> with the statement? </p>
+                    <input id="text_3_a" name="user_stance_3" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+                    <input id="text_3_b" name="user_stance_3" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+                <br><br>	
+                </div>
+                <div id="box_3">
+                    Write down <b style="color: blue;">"agreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "agree_3_box" name="agree_3_op" rows="10" cols=55 value="" required></textarea>
+                    </div>
+                    <br><br>
+                    Write down <b style="color: red;">"disagreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "disagree_3_box" name="disagree_3_op" rows="10" cols=55 value="" required></textarea>
+                    </div> 
+                    <br><br>
+                    Click "Go to Next statement" to view the fourth statement. Then, you need to follow the same instruction. <br>	
+                    <br>
+                    <label class="btn btn-primary" onclick="go_to_next_statement(3)">Go to Next Statement</label>
+                </div>
+        </div>
+    <hr><br>
+    </section>
+
+    <section id="section4" style="display:none">
+        <h2>Statement 4 out of 7</h2>
+        <br>
+        The opinion format must follow this: 
+        <ol>
+            <li><b style="color:blue">IMPORTANT: </b> When you write down each opinion, <b>start with the numbered list (e.g., 1., 2., 3., etc.), followed by the enterspace.
+            Each opinion should take one line, and another opinion should be written in the next line. </b> </li>
+            <li> <mark><b>Try to think up opinions with diversity (e.g., different reasons).</b></mark>. </li>
+        </ol>
+        <br>
+        <div class="row">
+            <div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+                ${statement4}
+            </div>
+                <br>
+                <div id="personal_opinion_4">
+                    <p>Do you <b style="color:blue">agree</b> or <b style="color:red">disagree</b> with the statement? </p>
+                    <input id="text_4_a" name="user_stance_4" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+                    <input id="text_4_b" name="user_stance_4" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+                <br><br>	
+                </div>
+                <div id="box_4">
+                    Write down <b style="color: blue;">"agreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "agree_4_box" name="agree_4_op" rows="10" cols=55 value="" required></textarea>
+                    </div>
+                    <br><br>
+                    Write down <b style="color: red;">"disagreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "disagree_4_box" name="disagree_4_op" rows="10" cols=55 value="" required></textarea>
+                    </div> 
+                    <br><br>
+                    Click "Go to Next statement" to view the 5th statement. Then, you need to follow the same instruction. <br>	
+                    <br>
+                    <label class="btn btn-primary" onclick="go_to_next_statement(4)">Go to Next Statement</label>
+                </div>
+        </div>
+    <hr><br>
+    </section>
+    
+	<section id="section5" style="display:none">
+		<h2>Statement 5 out of 7</h2>
+        <br>
+        The opinion format must follow this: 
+        <ol>
+            <li><b style="color:blue">IMPORTANT: </b> When you write down each opinion, <b>start with the numbered list (e.g., 1., 2., 3., etc.), followed by the enterspace.
+            Each opinion should take one line, and another opinion should be written in the next line. </b> </li>
+            <li> <mark><b>Try to think up opinions with diversity (e.g., different reasons).</b></mark>. </li>
+        </ol>
+        <br>
+	    <div class="row">
+            <div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+                ${statement5}
+            </div>
+			<br>
+                <div id="personal_opinion_5">
+                    <p>Do you <b style="color:blue">agree</b> or <b style="color:red">disagree</b> with the statement? </p>
+                    <input id="text_5_a" name="user_stance_5" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+                    <input id="text_5_b" name="user_stance_5" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+                <br><br>	
+                </div>
+                <div id="box_5">
+                    Write down <b style="color: blue;">"agreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "agree_5_box" name="agree_5_op" rows="10" cols=55 value="" required></textarea>
+                    </div>
+                    <br><br>
+                    Write down <b style="color: red;">"disagreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "disagree_5_box" name="disagree_5_op" rows="10" cols=55 value="" required></textarea>
+                    </div> 
+                    <br><br>
+                </div>
+				<br><br>
+                <!-- Click "Demographics" Question to answer the final question. Almost there!
+                <br><br>
+			    <label class="btn btn-primary" onclick="finish()">Next Question: Demographics</label> -->
+                Click "Go to Next statement" to view the 6th statement. Then, you need to follow the same instruction. <br>	
+                <br>
+                <label class="btn btn-primary" onclick="go_to_next_statement(5)">Go to Next Statement</label>
+		    </div>				
+		</div>
+		<hr><br>
+	</section>
+
+    <section id="section6" style="display:none">
+        <h2>Statement 6 out of 7</h2>
+        <br>
+        The opinion format must follow this: 
+        <ol>
+            <li><b style="color:blue">IMPORTANT: </b> When you write down each opinion, <b>start with the numbered list (e.g., 1., 2., 3., etc.), followed by the enterspace.
+            Each opinion should take one line, and another opinion should be written in the next line. </b> </li>
+            <li> <mark><b>Try to think up opinions with diversity (e.g., different reasons).</b></mark>. </li>
+        </ol>
+        <br>
+        <div class="row">
+            <div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+                ${statement6}
+            </div>
+                <br>
+                <div id="personal_opinion_6">
+                    <p>Do you <b style="color:blue">agree</b> or <b style="color:red">disagree</b> with the statement? </p>
+                    <input id="text_6_a" name="user_stance_6" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+                    <input id="text_6_b" name="user_stance_6" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+                <br><br>	
+                </div>
+                <div id="box_6">
+                    Write down <b style="color: blue;">"agreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "agree_6_box" name="agree_6_op" rows="10" cols=55 value="" required></textarea>
+                    </div>
+                    <br><br>
+                    Write down <b style="color: red;">"disagreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "disagree_6_box" name="disagree_6_op" rows="10" cols=55 value="" required></textarea>
+                    </div> 
+                    <br><br>
+                    Click "Go to Next statement" to view the last statement. Then, you need to follow the same instruction. <br>	
+                    <br>
+                    <label class="btn btn-primary" onclick="go_to_next_statement(6)">Go to Next Statement</label>
+                </div>
+            </div>
+        <hr><br>
+    </section>
+
+    <section id="section7" style="display:none">
+        <h2>Statement 7 out of 7</h2>
+        <br>
+        The opinion format must follow this: 
+        <ol>
+            <li><b style="color:blue">IMPORTANT: </b> When you write down each opinion, <b>start with the numbered list (e.g., 1., 2., 3., etc.), followed by the enterspace.
+            Each opinion should take one line, and another opinion should be written in the next line. </b> </li>
+            <li> <mark><b>Try to think up opinions with diversity (e.g., different reasons).</b></mark>. </li>
+        </ol>
+        <br>
+        <div class="row">
+            <div id="example_input_text" style="border-style: dotted; border-color: CornflowerBlue; padding: 10px; color:DimGray">
+                ${statement7}
+            </div>
+                <br>
+                <div id="personal_opinion_7">
+                    <p>Do you <b style="color:blue">agree</b> or <b style="color:red">disagree</b> with the statement? </p>
+                    <input id="text_7_a" name="user_stance_7" type="radio" value="agree" required/> <span id="explanation">Agree</span> <br>
+                    <input id="text_7_b" name="user_stance_7" type="radio" value="disagree"/> <span id="explanation">Disagree</span>
+                <br><br>	
+                </div>
+                <div id="box_7">
+                    Write down <b style="color: blue;">"agreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "agree_7_box" name="agree_7_op" rows="10" cols=55 value="" required></textarea>
+                    </div>
+                    <br><br>
+                    Write down <b style="color: red;">"disagreeing"</b> opinions as many as you can think up. 
+                    <div style="border-style: dotted; border-color: Purple; padding: 10px; color:DimGray">
+                        <textarea id = "disagree_7_box" name="disagree_7_op" rows="10" cols=55 value="" required></textarea>
+                    </div> 
+                    <br><br>
+                Click "Demographics" Question to answer the final question. Almost there!
+                <br><br>
+			    <label class="btn btn-primary" onclick="finish()">Next Question: Demographics</label>
+                </div>
+            </div>
+        <hr><br>
+    </section>
+
+		<section id="comment_section" style="display:none">
+		<div class="row">
+			<h2>What race do you identify yourself as?</h2>
+					<input id="white_race" name="demographic_question_race" type="radio" value="white" required/> <span id="demographic_q">White</span> <br>
+					<input id="black_race" name="demographic_question_race" type="radio" value="black"/> <span id="demographic_q">Black or African American</span><br>
+					<input id="asian_race" name="demographic_question_race" type="radio" value="asian"/> <span id="demographic_q">Asian</span><br>
+					<input id="native_race" name="demographic_question_race" type="radio" value="native"/> <span id="demographic_q">Native American or Alaska Native</span><br>
+					<input id="pacific_race" name="demographic_question_race" type="radio" value="pacific"/> <span id="demographic_q">Pacific Islander</span><br>
+					<input id="other_race" name="demographic_question_race" type="radio" value="other"/> <span id="demographic_q">Other</span><br>
+			<h2>What is your age group?</h2>					
+					<input id="q2_17" name="demographic_question_age" type="radio" value="younger_than_17" required/> <span id="demographic_q">< 17</span> <br>
+					<input id="q2_24" name="demographic_question_age" type="radio" value="17_to_24" required/> <span id="demographic_q">17-24</span> <br>
+					<input id="q2_34" name="demographic_question_age" type="radio" value="25_to_34"/> <span id="demographic_q">25-34</span><br>
+					<input id="q2_44" name="demographic_question_age" type="radio" value="35_to_44"/> <span id="demographic_q">35-44</span><br>
+					<input id="q2_54" name="demographic_question_age" type="radio" value="45_to_54"/> <span id="demographic_q">45-54</span><br>
+					<input id="q2_64" name="demographic_question_age" type="radio" value="55_to_64"/> <span id="demographic_q">55-64</span><br>
+					<input id="q2_74" name="demographic_question_age" type="radio" value="65_to_74"/> <span id="demographic_q">65-74</span><br>
+					<input id="q2_older" name="demographic_question_age" type="radio" value="older_than_74"/> <span id="demographic_q">> 74</span><br>
+            <h2>What is your highest education degree completed?</h2>					
+					<input id="ed_no" name="demographic_question_ed" type="radio" value="no_school" required/> <span id="demographic_q">No Schooling Completed</span> <br>
+					<input id="ed_less_high" name="demographic_question_ed" type="radio" value="less_high" required/> <span id="demographic_q">Less than High School</span> <br>
+					<input id="ed_high" name="demographic_question_ed" type="radio" value="high"/> <span id="demographic_q">High School (or GED)</span><br>
+					<input id="ed_asso" name="demographic_question_ed" type="radio" value="associate_someC"/> <span id="demographic_q">Associate (or Some College but not finished)</span><br>
+					<input id="ed_bachelor" name="demographic_question_ed" type="radio" value="bachelor"/> <span id="demographic_q">Bachelor's degree</span><br>
+					<input id="ed_master" name="demographic_question_ed" type="radio" value="master"/> <span id="demographic_q">Master's degree</span><br>
+					<input id="ed_prof" name="demographic_question_ed" type="radio" value="professional"/> <span id="demographic_q">Professional degree (e.g., JD, MD, PharmD)</span><br>
+					<input id="ed_phd" name="demographic_question_ed" type="radio" value="phd"/> <span id="demographic_q">Doctorate (PhD)</span><br>
+				<h2>Any comments or feedback on this task? (Optional)</h2>
+				<br>
+				<textarea id="comment_box" name="comments" rows="4" cols="50">
+			</textarea>
+			<br>
+			Click "Submit" to submit this task. Thank you!
+			<br>
+			</div>
+		</section>
+	
+	</crowd-form>
+		
+	</div>	
+</div>
+
+
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet" /><!-- Open internal style sheet -->
+<style type="text/css">.fixed {
+  position: fixed;
+}
+textarea {
+        width: 100%; /* Full width of the parent div */
+        height: 100%; /* Full height of the parent div */
+        box-sizing: border-box; /* Including padding and border in the element's total width and height */
+        resize: none; /* Disabling the resize handle at the bottom-right corner of the textarea */
+    }
+p{
+	font-size: 20px;
+}
+
+ul{
+	margin-top: 0;
+	padding-left: 20px;
+}
+    
+li{
+	margin-bottom: 10px;
+}
+
+#explanation{
+	font-size: 20px;
+}
+
+.scrollable {
+    height: 2000px;
+    width: 500%;
+    margin: 0 auto;
+    border: 1px dashed black;   
+}
+
+.row{
+	margin: 20px;
+}
+
+.form-group{
+    margin-bottom: 0px;
+
+}
+.group-label{
+  display: block;
+  font-weight: 400!important;
+}
+.container{
+font-size: 18px!important;
+}
+
+#collapseTrigger{
+    color:#fff;
+    display: block;
+    text-decoration: none;
+  }
+  #submitButton{
+    white-space: normal;
+  }
+  #instructionBody table{
+    font-size: 15px;
+    margin-top: 30px;
+  }
+  #instructionBody table caption{
+    text-align: left;
+    padding: 0 0 5px 0;
+  }
+    .content{
+    margin-bottom: 10px;
+  }
+  .radio:first-of-type{
+    margin-top: -5px;
+  }
+  img {
+  	object-fit: cover;
+	}
+
+table {
+	border-collapse: collapse;
+	margin-bottom: 10px;
+}
+    
+th, td {
+	border: 1px solid black;
+	padding: 5px;
+	text-align: left;
+}
+th {
+	text-align: center;
+}
+</style>
+<!-- Close internal style sheet --><!-- External JS references --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+	function show_task() {
+  		document.getElementById("instruction").style.display = "none";
+  		document.getElementById("practice").style.display = "";  		
+  	}
+  	function show_real_task() {
+  		document.getElementById("practice").style.display = "none";
+  		document.getElementById("task").style.display = "";
+  		document.getElementById("section1").style.display = "";		
+  	}
+
+  	// function go_to_diversity_questions(idx) {
+  	// 	temp1 = document.getElementById("text_"+idx+"_a").checked
+  	// 	temp2 = document.getElementById("text_"+idx+"_b").checked  		
+  	// 	if (temp1 == false && temp2 == false){
+  	// 		alert("You should select your stance whether you agree or disagree")
+  	// 	}
+  	// 	else{
+  	// 		document.getElementById("personal_opinion_"+idx).style.display = "none";
+  	// 		document.getElementById("agree_"+idx).style.display = "";
+  	// 		document.getElementById("disagree_"+idx).style.display = "";	
+  	// 	}
+  			
+  	// }
+
+	function go_to_agree_opinions(idx) {
+		temp1 = document.getElementById("text_"+idx+"_a").checked
+		temp2 = document.getElementById("text_"+idx+"_b").checked  		
+		if (temp1 == false && temp2 == false){
+			alert("You should select your stance whether you agree or disagree")
+		}
+		else{
+			document.getElementById("personal_opinion_"+idx).style.display = "none";
+			document.getElementById("agree_"+idx).style.display = "";
+		}		
+	}
+
+	function go_to_disagree_opinions(idx) {
+		check_agree = false
+		check_disagree = false
+
+		temp1 = document.getElementById("agr_text_"+idx+"_diversity_seta").checked
+		temp2 = document.getElementById("agr_text_"+idx+"_diversity_setb").checked
+
+		if (temp1 == false && temp2 == false){
+			alert("You should select either 'Set A' or 'Set B'.")
+		}
+		else{
+			check_agree = true
+			document.getElementById("personal_opinion_"+idx).style.display = "none";
+			document.getElementById("agree_"+idx).style.display = "none";
+			document.getElementById("disagree_"+idx).style.display = "";	
+		}
+		
+	}	
+
+  	function go_to_next_statement(idx) {
+  		next_idx = idx + 1
+        check_stance = false
+  		check_agree = false
+		check_disagree = false
+
+		temp1 = document.getElementById("text_"+idx+"_a").checked
+	    temp2 = document.getElementById("text_"+idx+"_b").checked
+        temp3 = document.getElementById("agree_"+idx+"_box").value.trim()
+        temp4 = document.getElementById("disagree_"+idx+"_box").value.trim()
+
+        if (temp1 == false && temp2 == false){
+            alert("You should select either agree or disagree.")
+        }
+        else{
+            check_stance = true
+        }
+
+        if (temp3 == ''){
+            alert("You should write down your reasons that agree with the statement.")
+        }
+        else{
+            check_agree = true
+        }
+
+        if (temp4 == ''){
+            alert("You should write down your reasons that disagree with the statement.")
+        }
+        else{
+            check_disagree = true
+        }
+
+  		if (check_agree == true && check_disagree == true && check_stance == true){
+  			document.getElementById("section"+idx).style.display = "none";
+  			document.getElementById("section"+next_idx).style.display = "";	
+  		}
+  			
+  	}
+
+  	function finish(){
+  		idx = 7
+		check_agree = false
+        check_disagree = false
+        check_stance = false
+		// temp1 = document.getElementById("agr_text_"+idx+"_diversity_seta").checked
+		// temp2 = document.getElementById("agr_text_"+idx+"_diversity_setb").checked
+  		// if (temp1 == false && temp2 == false){
+		// 	alert("You should select either 'Set A' or 'Set B'.")
+  		// }
+  		// else{
+  		// 	check_agree = true
+  		// }
+        temp1 = document.getElementById("text_"+idx+"_a").checked
+	    temp2 = document.getElementById("text_"+idx+"_b").checked
+		temp3 = document.getElementById("agree_"+idx+"_box").value.trim()
+		temp4 = document.getElementById("disagree_"+idx+"_box").value.trim()
+
+        if (temp1 == false && temp2 == false){
+            alert("You should select either agree or disagree.")
+        }
+        else{
+            check_stance = true
+        }
+
+        if (temp3 == ''){
+            alert("You should write down your reasons that agree with the statement.")
+        }
+        else{
+            check_agree = true
+        }
+
+        if (temp4 == ''){
+            alert("You should write down your reasons that disagree with the statement.")
+        }
+        else{
+            check_disagree = true
+        }
+
+  		if (check_agree == true && check_disagree == true && check_stance == true){
+  		
+  			document.getElementById("section7").style.display = "none";
+  			document.getElementById("comment_section").style.display = "";
+  		}
+  	}
+
+  	function check_practice_submission() {
+  		
+  		temp1 = document.getElementById("text_practice_ag").checked
+  		temp2 = document.getElementById("text_practice_dis").checked 
+  		first_qual = false
+
+  		if (temp1 == false && temp2 == false){
+  			alert("You should select your opinion.")  			
+  		}
+  		else{
+  			first_qual = true
+  		}
+
+        agree_box = document.getElementById("example_agree_box").value.trim();
+        disagree_box = document.getElementById("example_disagree_box").value.trim();
+
+  		if(agree_box == '' || disagree_box == '')
+		{
+    		alert("Please write your reason");
+  		}
+  		else{
+  			second_qual = true
+  		}
+
+  		if (first_qual == true && second_qual == true){
+  			show_real_task()
+  		}
+  			
+  	}
+  
+  </script><!-- Close internal javascript -->
