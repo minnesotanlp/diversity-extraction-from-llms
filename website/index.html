@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Under the Surface: Tracking the Artifactuality of LLM-Generated Data</title>
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="static/css/bulma.min.css" />
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="static/css/index.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <!-- <section class="hero is-warning">
+        <div class="hero-body">
+          <p class="title">
+            Under Construction
+          </p>
+          <p class="subtitle">
+            Internal preview only
+          </p>
+        </div>
+      </section> -->
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">
+                Under the Surface: Tracking the Artifactuality of LLM-Generated Data
+              </h1>
+              <div class="is-size-5 publication-authors">
+                <!-- Paper authors -->
+                <span class="author-block">
+                  <a href="https://debaratidas94.github.io/" target="_blank"
+                    >Debarati Das</a
+                  ><sup>*†</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://karinjd.github.io/" target="_blank"
+                    >Karin de Langis</a
+                  ><sup>*</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://anmartin94.github.io/" target="_blank"
+                    >Anna Martin-Boyle</a
+                  ><sup>*</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://sites.google.com/view/jaehyungkim" target="_blank"
+                    >Jaehyung Kim</a
+                  ><sup>*</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://mimn97.github.io/" target="_blank"
+                    >Minhwa Lee</a
+                  ><sup>*</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://zaemyung.github.io/" target="_blank"
+                    >Zae Myung Kim</a
+                  ><sup>*</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://www.shirley.id/" target="_blank"
+                    >Shirley Anugrah Hayati</a
+                  >,
+                </span>
+                <span class="author-block">
+                  <a target="_blank"
+                    >Risako Owan</a
+                  >,
+                </span>
+                <span class="author-block">
+                  <a href="https://bin-hu.com/" target="_blank"
+                    >Bin Hu</a
+                  >,
+                </span>
+                <span class="author-block">
+                  <a target="_blank"
+                    >Ritik Sachin Parkar</a
+                  >,
+                </span>
+                <span class="author-block">
+                  <a href="https://kooryan.netlify.app/" target="_blank"
+                    >Ryan Koo</a
+                  >,
+                </span>
+                <span class="author-block">
+                  <a target="_blank"
+                    >Jong Inn Park</a
+                  >,
+                </span>
+                <span class="author-block">
+                  <a target="_blank"
+                    >Aahan Tyagi</a
+                  >,
+                </span>
+                <span class="author-block">
+                  <a target="_blank"
+                    >Libby Ferland</a
+                  >,
+                </span>
+                <span class="author-block">
+                  <a target="_blank"
+                    >Sanjali Roy</a
+                  >,
+                </span>
+                <span class="author-block">
+                  <a target="_blank"
+                    >Vincent Liu</a
+                  >,
+                </span>
+                <span class="author-block">
+                  <a href="https://dykang.github.io/" target="_blank"
+                    >Dongyeop Kang</a
+                  >
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <a class="subtitle" style="color: black !important;" href="https://minnesotanlp.github.io/">Minnesota NLP Lab<img src="static/logos/mnnlp.png" style="height: 1em; margin-inline: 5px;">, University of Minnesota</a>
+                <span class="eql-cntrb"
+                  ><small
+                    ><br /><sup>*</sup>Core Contributor <sup>†</sup>Project Lead</small
+                  ></span
+                >
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- Arxiv PDF link -->
+                  <span class="link-block">
+                    <a
+                      href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark is-static"
+                    >
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a
+                      href="https://github.com/minnesotanlp/artifacts-of-llmgendata"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark is-outlined"
+                    >
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+
+                  <!-- ArXiv abstract Link -->
+                  <span class="link-block">
+                    <a
+                      href="https://arxiv.org/abs/<ARXIV PAPER ID>"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark is-static"
+                    >
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+
+                  <!-- Huggingface data Link -->
+                  <span class="link-block">
+                    <a
+                      href="https://huggingface.co/datasets/minnesotanlp/LLM-Artifacts"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark is-outlined"
+                    >
+                      <span class="icon">
+                        <img src="static/logos/hf-logo.svg" width="25" height="25"></img>
+                      </span>
+                      <span>Data</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+          <div class="container is-max-desktop">
+            <div class="columns is-centered">
+              <div class="column is-8">
+                  <img
+                    src="static/images/iceberg_modified.jpg"
+                    class="center-image"
+                  />
+              </div>
+            </div>
+          </div>
+
+          <section class="section hero">
+            <div class="container is-max-desktop">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                  <h2 class="title is-3">Abstract</h2>
+                  <div class="content has-text-justified">
+                    <p>
+                      This work delves into the expanding role of large language models (LLMs) in generating artificial data. LLMs are increasingly employed to create a variety of outputs, including annotations, preferences, instruction prompts, simulated dialogues, and free text. As these forms of LLM-generated data often intersect in their application, they exert mutual influence on each other and raise significant concerns about the quality and diversity of the artificial data incorporated into training cycles, leading to an <i>artificial data ecosystem</i>. To the best of our knowledge, this is the first study to aggregate various types of LLM-generated text data, from more tightly constrained ones like “task labels” to more lightly constrained “free-form text”. We then stress test the quality and implications of LLM-generated artificial data, comparing it with human data across various existing benchmarks. Despite its capability to match human performance, this paper reveals significant hidden disparities, especially in complex tasks where LLMs often miss the nuanced understanding of intrinsic human-generated content. This study critically examines diverse LLM-generated data and emphasizes the need for ethical practices in data creation and use using LLMs. It highlights the LLMs' shortcomings in replicating human traits and behaviors, underscoring the importance of addressing biases and artifacts produced in LLM-generated content for future research and development.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        
+    <!-- Research question start -->
+    <section class="section hero is-small is-light">
+      <div class="container is-max-desktop">
+        <div class="content">
+          <h2 class="title is-3">Research Questions</h2>
+          <div class="level-set has-text-justified">
+            <p><b>RQ1</b> What is the nature of SOTA artificial data? How does it compare to human data, and what artifacts does it contain?</p>
+            <p><b>RQ2</b> Does training on artificial data compromise performance outcomes compared to similar human-generated data?</p>
+            <p><b>RQ3</b> How specific are the artifacts of artificial data to certain types of data produced by large language models (LLMs), and how much do they apply to all types of data generated by LLMs?</p>
+          </div>
+        </div>
+    </section>
+    <!-- Research question end -->
+
+    <!-- Data type start -->
+    <section class="section hero is-small">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <div class="content">
+              <h2 class="title is-3">Types of Artificial Data</h2>
+              <img src="static\images\type_data.png" alt="type_data.png" class="center-image"/>
+              <div class="level-set has-text-justified">
+                <p>
+                  <ul>
+                    <li><b>Task Labels</b> for classification tasks over textual input, bypassing the need for human annotators. (Dataset: <a href="https://dl.acm.org/doi/10.1145/3173574.3173986">Sentiment</a>, <a href="https://arxiv.org/abs/1911.03891">SBIC</a>, <a href="https://link.springer.com/article/10.1007/s10579-021-09569-x">GHC</a>, <a href="https://arxiv.org/abs/2011.00620">Social Chem.</a>)</li> 
+                    <li><b>Preference</b> specifically evaluating which text is better, is useful for human alignment tasks such as training reward models used in RLHF. (Dataset: <a href="https://arxiv.org/abs/2309.17012">CoBBLEr</a>, <a href="https://arxiv.org/abs/2306.04925">P2C</a>)
+                    <li><b>Instruction prompts</b> written by LLMs for instruction fine-tuning, eliminating the need for humans to write comprehensive sets of diverse instructions.</li> (Dataset: <a href="https://arxiv.org/abs/2212.09689">Unnat. Instr.</a>, <a href="https://arxiv.org/abs/2212.10560">Self-Instruct</a>, <a href="https://github.com/tatsu-lab/stanford_alpaca">Alpaca-cleaned</a>, <a href="https://arxiv.org/abs/2304.03277">GPT-4-LLM</a>, <a href="https://www.databricks.com/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm">FLAN</a>, <a href="https://www.databricks.com/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm">Dolly</a>, <a href="https://aclanthology.org/2022.emnlp-main.340/">SuperNat. Instr.</a>, <a href="https://github.com/XueFuzhao/InstructionWild">Instr. in the Wild</a>)
+                    <li><b>Simulation</b> where two large language model (LLM) agents converse, has potential for enhancing model performance and simulating intricate social interactions, according to initial studies. (Dataset: <a href="https://arxiv.org/abs/2307.05300">Grid-World</a>, <a href="https://arxiv.org/abs/2303.17760">CAMEL</a>)</li> 
+                    <li><b>Free-Form Text</b> written by an LLM, often used to compensate for data scarcity issues and used for pretraining and/or finetuning. (Dataset: <a href="https://arxiv.org/abs/2301.07597">HC3</a>, <a href="https://aclanthology.org/2022.acl-long.501/">Scarecrow</a>, <a href="https://arxiv.org/abs/2305.13242">Deepfake</a>, <a href="https://arxiv.org/abs/2304.13861">Workers</a>)</li>
+                    <button class="button is-link is-inverted">
+                      <span class="icon">
+                        <img src="static/logos/hf-logo.svg" width="25" height="25"></img>
+                      </span>
+                      <a href="https://huggingface.co/datasets/minnesotanlp/LLM-Artifacts"
+                      target="_blank">Check the datasets on Huggingface</a>
+                    </button>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Data type end -->
+
+    <!-- Research Contributions start -->
+    <section class="section hero is-small is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <div class="content">
+              <h2 class="title is-3">Research Contributions</h2>
+              <div class="level-set has-text-justified">
+              <ul>
+                <li>We present a pioneering effort in gathering a diverse range of text data produced by LLMs, covering everything from more structured "task labels" to open-ended "free-form text." This comprehensive collection is significant as it allows for a unique and holistic examination of LLM outputs and  provides insights into how LLMs perform under varying degrees of structure and freedom, which is essential for both understanding their current state and guiding future improvements and applications.</li>
+                <li>We aggregate and conduct comprehensive stress tests on various data generated by LLMs using the existing benchmarks, offering a thorough evaluation of the quality, consistency, and reliability of LLM outputs across diverse models and scenarios, thereby providing a groundbreaking insight into their strengths and weaknesses for future research and development.</li>
+                <li>Our research emphasizes the critical need for responsible and ethical practices in creating and using LLM-generated data, advocating for collaborative efforts among stakeholders to address biases, increase diversity, and deepen the understanding of complex human opinions in LLM outputs, thereby ensuring their development benefits society ethically and sustainably.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    </section>
+    <!-- Research Contributions end -->
+
+    <!-- Takeaway start -->
+    <span id="takeaway">
+      <!-- The content in this section will be replaced with the content in takeaway-mobile.html if the browser's width is less than 1024px. -->
+      <section class="section hero is-small">
+        <div class="container is-max-desktop">
+          <div class="content">
+            <h2 class="title is-3">Key Takeaways</h2>
+            <ul>
+              <li>
+                <p class="subtitle">
+                  LLMs demonstrate a subpar understanding of complex human opinions
+                  and interactions.
+                </p>
+              </li>
+              <div class="hero-body">
+                <div class="container">
+                  <div id="carousel1" class="carousel results-carousel">
+                    <div class="item">
+                      <p class="subtitle has-text-centered"><b>Task Labels</b> - section 5.1</p>
+                      <div style="display: flex; justify-content: center">
+                        <img src="/static/images/9.png" style="max-height: 260px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                                                While generating <b>task labels</b>, LLMs over-represent majority opinions and do not match minority opinions well. They also show a tendency to be misleadingly confident concerning sentences with age, gender, religion, and race bias.
+                                              </p>
+                    </div>
+
+                    <div class="item">
+                      <p class="subtitle has-text-centered"><b>Free-Form Text</b> - section 9.1</p>
+                      <div style="display: flex; justify-content: center">
+                        <img src="/static/images/7.png" style="max-height: 260px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                                                In creating <b>free-form text</b>, LLMs exhibit styles that differ significantly from human approaches in diverse social contexts. Moreover, unlike human discourse, which varies widely across domains, LLM discourse patterns remain relatively consistent.
+                                              </p>
+                    </div>
+
+                    <div class="item">
+                      <p class="subtitle has-text-centered"><b>Preferences</b> - section 6.1</p>
+                      <div style="display: flex; justify-content: center">
+                        <img src="/static/images/15.png" style="max-height: 260px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                                              For elicitation of <b>preferences</b>, we find that LLM preferences are tightly coupled with standalone lexical cues, whereas human preferences appear to take a more holistic approach.
+                                            </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <li>
+                <p class="subtitle">
+                  LLMs struggle to respond effectively when faced with unknown or
+                  unfamiliar situations.
+                </p>
+              </li>
+              <div class="hero-body">
+                <div class="container">
+                  <div id="carousel2" class="carousel results-carousel">
+                    <div class="item">
+                      <p class="subtitle has-text-centered"><b>Simulation</b> - section 8.1</p>
+                      <div style="display: flex; justify-content: center">
+                        <img src="/static/images/17.png" style="max-height: 260px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                                        In LLM <b>simulations</b> (i.e. conversations between two LLM agents), one of the most common errors is role flipping, or the agents swapping their assigned roles. This happens most frequently when the agent becomes confused, indicating that the simulation breaks down when an agent does not understand how to respond.
+                                      </p>
+                    </div>
+
+                    <div class="item">
+                      <p class="subtitle has-text-centered"><b>Instructions</b> - section 7.1</p>
+                      <div style="display: flex; justify-content: center">
+                        <img src="/static/images/13.png" style="max-height: 260px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                                        In <b>instruction</b> writing, LLMs may provide incorrect outputs for a written instruction rather than an output that indicates uncertainty or lack of knowledge of the answer. In downstream training, these incorrect outputs result in more hallucinations produced by instruction-tuned models.</i>
+                                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <li>
+                <p class="subtitle">
+                  LLMs are deficient in accurately mirroring human behavior for
+                  particular tasks.
+                </p>
+              </li>
+              <div class="hero-body">
+                <div class="container">
+                  <p class="subtitle has-text-centered"><b>Simulation</b> - section 8.1</p>
+                  <div style="display: flex; justify-content: center">
+                    <img src="/static/images/19.png" style="max-height: 260px" />
+                  </div>
+                  <p class="subtitle is-6 has-text-centered">
+                              In <b>simulations</b>, where LLM agents engage in conversations focused on problem-solving, these agents often stray from the main topic, negatively impacting task performance. This contrasts with human digressions, facilitating team building and contributing to more effective problem resolution.
+                            </p>
+                </div>
+              </div>
+              <li>
+                <p class="subtitle">
+                  Models trained on LLM data containing the above issues have degraded
+                  performance.
+                </p>
+              </li>
+              <div class="hero-body">
+                <div class="container">
+                  <div id="carousel3" class="carousel results-carousel">
+                    <div class="item">
+                      <p class="subtitle has-text-centered"><b>Free-Form Text</b> - section 9.2</p>
+                      <div style="display: flex; justify-content: center">
+                        <img src="/static/images/8.png" style="max-height: 260px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                                        We find that models trained on several types of LLM-generated data -- specifically <b>instructions</b>, <b>free-form text</b>, and <b>preferences</b> -- are at risk for degraded performance when compared to models trained on corresponding human data. In addition, these performance deficits appear to be tied to artifacts in LLM-generated data. 
+                                      </p>
+                    </div>
+                    <div class="item">
+                      <p class="subtitle has-text-centered"><b>Task Labels</b> - section 5.2</p>
+                      <div style="display: flex; justify-content: center">
+                        <img src="/static/images/12.jpg" style="max-height: 260px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                                      We find that models trained on several types of LLM-generated data -- specifically <b>instructions</b>, <b>free-form text</b>, and <b>preferences</b> -- are at risk for degraded performance when compared to models trained on corresponding human data. In addition, these performance deficits appear to be tied to artifacts in LLM-generated data. 
+                                    </p>
+                    </div>
+                    <div class="item">
+                      <p class="subtitle has-text-centered"><b>Instructions</b> - section 7.2</p>
+                      <div style="display: flex; justify-content: center">
+                        <img src="/static/images/14.png" style="max-height: 260px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                                      We find that models trained on several types of LLM-generated data -- specifically <b>instructions</b>, <b>free-form text</b>, and <b>preferences</b> -- are at risk for degraded performance when compared to models trained on corresponding human data. In addition, these performance deficits appear to be tied to artifacts in LLM-generated data. 
+                                    </p>
+                    </div>
+                    <div class="item">
+                      <p class="subtitle has-text-centered"><b>Preferences</b> - section 6.2</p>
+                      <div style="display: flex; justify-content: center">
+                        <img src="/static/images/16.png" style="max-height: 260px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                                    We find that models trained on several types of LLM-generated data -- specifically <b>instructions</b>, <b>free-form text</b>, and <b>preferences</b> -- are at risk for degraded performance when compared to models trained on corresponding human data. In addition, these performance deficits appear to be tied to artifacts in LLM-generated data. 
+                                  </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </span>
+    <!-- Takeaway end -->
+
+    <!-- Limitations start -->
+    <section class="section hero is-small is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <div class="content">
+              <h2 class="title is-3">Limitations</h2>
+              <div class="level-set has-text-justified">
+                <p>Our research acknowledges various limitations in studying LLMs. We aim to offer initial insights into LLM data quality and impact, rather than conclusive findings, due to the unpredictability and complexity of LLM outputs. Our study predominantly uses existing public datasets, focusing on text data relevant to NLP, and highlights the differences between LLM and human outputs, with an emphasis on ethical considerations.</p>
+                <p>However, our approach may introduce biases and limits the study's breadth. We employ human validation and qualitative analysis for assessing creativity and bias, while facing challenges in artifact analysis. Our experiments don't fully leverage the latest LLM methodologies due to resource constraints. This research, transparent in its limitations, seeks to balance practicality with relevance, providing a comprehensive understanding of the scope and implications of our findings.</p>
+              </div>
+            </div>
+          </div>
+    </section>
+    <!-- Limitations end -->
+
+    <!--BibTex citation start-->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>PENDING</code></pre>
+      </div>
+    </section>
+    <!--BibTex citation end-->
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This page was built using the
+                <a
+                  href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                  target="_blank"
+                  >Academic Project Page Template</a
+                >
+                which was adopted from the <a
+                  href="https://nerfies.github.io"
+                  target="_blank"
+                  >Nerfies</a
+                > project page.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <script>
+      function loadHtmlWithScripts(targetElemId, filePath) {
+          return fetch(filePath)
+              .then((response) => response.text())
+              .then((data) => {
+                  const targetElem = document.getElementById(targetElemId);
+                  targetElem.innerHTML = data;
+
+                  const scripts = targetElem.querySelectorAll("script");
+                  scripts.forEach((script) => {
+                      const newScript = document.createElement("script");
+                      if (script.src) {
+                          newScript.src = script.src;
+                      } else {
+                          newScript.textContent = script.textContent;
+                      }
+                      document.body.appendChild(newScript);
+                      newScript.remove();
+                  });
+              });
+      }
+      function loadTakeaway() {
+          if (window.innerWidth < 1024) {
+              loadHtmlWithScripts('takeaway', 'takeaway-mobile.html');
+          }
+      }
+
+      loadTakeaway();
+
+    </script>
+
+    <!-- Statcounter tracking code -->
+
+    <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+  </body>
+</html>
