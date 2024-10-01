@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>How Far Can We Extract Diverse Perspectives from Large Language
+      Models?</title>
+    <link rel="icon" type="image/x-icon" href="website/static/images/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="website/static/css/bulma.min.css" />
+    <link rel="stylesheet" href="website/static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="website/static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="website/static/css/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="website/static/css/index.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="website/static/js/fontawesome.all.min.js"></script>
+    <script src="website/static/js/bulma-carousel.min.js"></script>
+    <script src="website/static/js/bulma-slider.min.js"></script>
+    <script src="website/static/js/index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">
+                How Far Can We Extract Diverse Perspectives from Large Language Models?
+              </h1>
+              <div class="is-size-5 publication-authors">
+                <!-- Paper authors -->
+                <span class="author-block">
+                  <a href="https://www.shirley.id/" target="_blank"
+                    >Shirley Anugrah Hayati</a
+                  ><sup>*</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://mimn97.github.io/" target="_blank"
+                    >Minhwa Lee</a
+                  ><sup>*</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="" target="_blank"
+                    >Dheeraj Rajagopal</a
+                  ><sup>†</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://dykang85.github.io/" target="_blank"
+                    >Dongyeop Kang</a
+                  ><sup>*</sup>
+                </span>
+                
+                <div class="is-size-5 publication-authors">
+                  <span class="eql-cntrb"
+                    >
+                    <sup>*</sup>University of Minnesota <sup>†</sup>Google Research</small
+                    ></span
+                  >
+                </div>
+                <br>
+                <h4><i>EMNLP 2024 (Main, Long Paper)</i></h4>
+
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+              
+                  <span class="link-block">
+                    <a
+                      href="https://github.com/minnesotanlp/diversity-extraction-from-llms/tree/main/data"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark is-outlined"
+                    >
+                      <span class="icon">
+                        <i class="fa fa-laptop"></i>
+                      </span>
+                      <span>Data</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-6">
+            <img
+              src="website/static/images/figure1_diversity_prompting.png"
+              width="500"
+              class="center-image"
+            />
+        </div>
+      </div>
+    </div>
+
+          <section class="section hero">
+            <div class="container is-max-desktop">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                  <h2 class="title is-3">Abstract</h2>
+                  <div class="content has-text-justified">
+                    <p>
+                      Collecting diverse human opinions is costly and challenging. This leads to a recent trend in collaborative efforts between humans and Large Language Models (LLMs) for generating diverse data, offering potential scalable and efficient solutions. However, the extent of LLMs' capability to generate diverse perspectives on subjective topics remains an unexplored question. 
+                      In this study, we investigate LLMs' capacity for generating diverse perspectives and rationales on subjective topics, such as social norms and argumentative texts. We formulate a new problem of <i>maximum diversity extraction</i> from LLMs. Motivated by how humans develop their opinions through their values, we propose a criteria-based prompting technique to ground diverse opinions. 
+                      To see how far we can extract diverse perspectives from LLMs, or called <i>>diversity coverage</i>, we employ a step-by-step recall prompting for generating more outputs from the model in an iterative manner. As we apply our methods to various tasks, indeed we find that LLMs can generate diverse opinions according to the degree of task subjectivity.
+                    
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+    <!-- Research Contributions start -->
+    <section class="section hero is-small is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <div class="content">
+              <h2 class="title is-3">Research Contributions</h2>
+              <div class="level-set has-text-justified">
+              <ul>
+                <li>First, we propose the idea of perspective diversity for generative LLMs, unlike lexical diversity, syntactical diversity, and semantic diversity which have been main interests in previous works. 
+                  We conduct various experiments to measure LLMs' ability to generate maximum perspective diversity. 
+                </li>
+                <li>Second,  we thus introduce a new prompting technique called criteria-based diversity prompting, as a way of extracting and grounding diverse perspectives from LLMs. 
+                </li>
+                <li>Finally, as it is unclear how much diversity LLMs can cover, we suggest a step-by-step approach for measuring the coverage of LLMs' diversity generation (i.e., measuring the recall for diversity prompting). 
+                  We then compare this coverage between LLM's generated opinions and human-written opinions. 
+                </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    </section>
+    <!-- Research Contributions end -->
+
+    <!--- Methods Start -->
+    <section class="hero is-small">
+      <div class="hero-body">
+        <div class="columns is-centered has-text-centered;">
+          <h1 class="title is-3">Methods</h1>
+        </div>
+
+        </div> 
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-full">
+              <div class="item">
+                <br>
+                <img src="website/static/images/combined_method_1.png" alt="prompting"/>
+
+              </div>
+              <div class="content has-text-justified">
+                <br>
+                <p>
+                <ol>
+                  <li> 
+                    <b style="color: slateblue">Criteria-based Diversity Prompting </b> 
+                    <p> 
+                      Our Criteria-based Diversity Prompting is as follows (shown in Figure <b>[a]</b>):
+                      <br>
+                      "Given a <i>statement</i>, we prompt the LLMs to generate its <b style = "color:magenta">stance (e.g., agree or disagree)</b> and explain its <b style="color:purple">Reasons</b> with a list of <b style="color:blue">Criteria</b> that affect its perspective. ""
+                    
+                    <br>
+                      <br>
+                      Here, we consider <b style="color:blue">criteria</b> words or phrases that frame the LLM's high-level decision and generate the grounded reasons well (e.g., model values).
+                    </p> 
+                    <p>
+                      
+                    </p>
+                  </li>
+                  <br>
+                  
+                  <li>
+                    <b style="color: slateblue">Step-by-Step Recall Prompting</b>
+                    <p>
+                      To see the LLMs' diversity coverage, we suggest a step-by-step recall prompting  (as shown in Figure <b>[b]</b> ): 
+                      <br>
+                      We first ask LLMs to generate one opinion ('1st Opinion') for the given statement, and we ask the models to continue generating more opinions until the requested number of opinions ('N') is reached. 
+                    </p>
+                    <p> Note that the first opinion is used to guide the structured format for the output since we do not do few-shot prompting for this experiment. </p>
+                    </li>
+                    <br>
+                    <li> 
+                      <b style="color: slateblue">Dataset & Models</b> 
+                      <p> 
+                        We collected the following datasets: (1) Social-Chem-101 (Forbes et al., 2020); (2) Change My View (CMV) (Hidey et al., 2017). 
+                        For the recall prompting technique, we added the two more datasets: (3) Hate Speech (Vidgen et al., 2021); and (4) Moral Stories (Emelin et al., 2021). 
+                      </p> 
+                      <p>
+                        Then, we assemble GPT-4, ChatGPT, and GPT-3 (text-davinci-002) as well as open-source models such as LLaMA2-70B-chat (Touvron et al., 2023) and Mistral-7B-Instruct (Jiang et al., 2023).
+                      </p>
+                    </li>
+                    <br>
+                    <li>
+                    <b style="color: slateblue">Evaluation</b>
+                    <p>
+                      We measured the diversity in LLM-generated opinions by using the following two metrics: 
+                      <ol>
+                        <li>
+                          <b>Semantic Diversity</b>: For each statement, we first model the generated reasons from LLMs as sentence embeddings using SentenceBERT. 
+                          We then measure the cosine distance among every pair of reasons and compute the average cosine distance across all the pairs. Note that we used this metric to compare the diversity of models' generated reasons 
+                          between criteria-based prompting and free-form prompting. 
+                        </li>
+                        <br>
+                        <li>
+                          <b>Perspective Diversity</b>: We prompt GPT-4 to cluster criteria words with similar meaning into one group, in order to examine the step-by-step recall prompting. 
+                          A perspective diversity score for a statement is the percentage of how many generated opinions of the statement have each of their criteria not duplicated with each other. 
+                          The higher the score is, the more diverse the set of generated opinions is. 
+                        </li>
+                      </ol>
+                    </p>
+                  </li>
+                </ol>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--- Methods end -->
+
+
+
+    <!-- Takeaway start -->
+    <span id="takeaway">
+      <section class="section hero is-small is-light">
+        <div class="container is-max-desktop">
+          <div class="content">
+            <h2 class="title is-3 has-text-centered">Key Takeaways</h2>
+            <ul>
+              <li>
+                <p class="subtitle">
+                  GPT-4 with the criteria-based diversity prompting in an one-shot setting shows the most semantically diverse opinions about social norms and argumentative topics.
+                </p>
+              </li>
+              <div class="hero-body">
+                <div class="container">
+                  <div class="item">
+                    <br>
+                    <img src="website/static/images/table1_semantic.png" alt="cobbler pipeline"/>
+
+                  </div>
+                  <div class="content has-text-justified">
+                    <br>
+                    <p>Semantic diversity (cosine distance) results for criteria-based prompting vs. free-form prompting and LLM variants. 
+                      1-criteria refers to one-shot criteria-based prompting and so on. 
+                      Text for the highest diversity score within the same LLM type is made \textbf{bold}. * p< 0.05 when comparing criteria-based prompting with free-form prompting. 
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <li>
+                <p class="subtitle">
+                  Task subjectivity of dataset tends to influence the capabilities of LLMs in producing the maximium number of diverse opinions. 
+                </p>
+              </li>
+              <div class="hero-body">
+                <div class="container">
+                  <div id="carousel2" class="carousel results-carousel">
+                    <div class="item">
+                      <div style="display: flex; justify-content: center">
+                        <img src="website/static/images/fig4_recall.png" style="max-height: 350px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                        X-axis is the number of generated opinions for our diversity coverage experiment and Y-axis is the average number of unique criteria clusters for all statements.
+                         Moral Stories do not have stances, so the line is only for all generated continued stories. 
+
+                                      </p>
+                    </div>
+
+                    <div class="item">
+                      <div style="display: flex; justify-content: center">
+                        <img src="website/static/images/table3_criteria.png" style="max-height: 350px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                        Different numbers of LLMs' generated unique criteria clusters for different task types. Max and median refer to the maximum and the median of the number of unique criteria clusters.
+                                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <li>
+                <p class="subtitle">
+                  Semantic diversity is not always positively correlated with perspective diversity.
+                </p>
+              </li>
+              <div class="hero-body">
+                <div class="container">
+                  <div class="item">
+                    <br>
+                    <img src="website/static/images/fig5_corr.png" alt="cobbler pipeline"/>
+                  </div>
+                  <div class="content has-text-justified">
+                    <br>
+                    <p>Scatter plot for X= semantic diversity (cosine distance) of opinions in each statement, Y = perspective diversity (% of statements without duplicate opinions). 
+                      A green circle refers to one statement with agree/hate speech reasons while a red triangle refers to statements with disagree/not hate opinions. 
+                      Story continuation in Moral Stories does not have stances and each story is represented by a purple circle.
+                    </p>
+                  </div>
+              </div>
+              </div>
+              <br>
+              <li>
+                <p class="subtitle">
+                  Humans and LLMs have different perspectives on socially argumentative topics. 
+                </p>
+              </li>
+              <div class="hero-body">
+                <div class="container">
+                  <div id="carousel2" class="carousel results-carousel">
+                    <div class="item">
+                      <div style="display: flex; justify-content: center">
+                        <img src="website/static/images/human_llm_qual.png" style="max-height: 350px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                        Opinions generated by GPT-4 (top) and a human (bottom) about a statement from Social-Chem-101.
+
+                                      </p>
+                    </div>
+
+                    <div class="item">
+                      <div style="display: flex; justify-content: center">
+                        <img src="website/static/images/table4_human.png" style="max-height: 260px" />
+                      </div>
+                      <p class="subtitle is-6 has-text-centered">
+                        Average number of criteria clusters of human opinions vs. GPT-4-generated opinions per statement with standard deviation. 
+                        <b>Humans generated slightly more diverse opinions than LLMs.</b>
+                                      </p>
+                    </div>
+                  </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </span>
+    <!-- Takeaway end -->
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This page was built using the
+                <a
+                  href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                  target="_blank"
+                  >Academic Project Page Template</a
+                >
+                which was adopted from the <a
+                  href="https://nerfies.github.io"
+                  target="_blank"
+                  >Nerfies</a
+                > project page.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>
